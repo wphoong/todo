@@ -1,7 +1,9 @@
 <section class="todoapp">
   <header class="header">
     <h1>todos</h1>
-    <input class="new-todo" placeholder="What needs to be done?" autofocus="">
+    <form id="new-form">
+    <input type="text" class="new-todo" placeholder="What needs to be done?" >
+    </form>
   </header>
   <section class="main">
     <ul class="todo-list">
@@ -13,6 +15,12 @@
 <script type="text/javascript">
 
   $(function() {
+    //prevents page from reloading after submitting
+    $('#new-form').submit(function(event){
+      event.preventDefault();
+      var textBox = $('.new-todo');
+      console.log("Task: " + textBox.val());
+    });
 
     // The taskHtml method takes in a JavaScript representation
     // of the task and produces an HTML representation using
