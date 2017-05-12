@@ -15,22 +15,6 @@
 <script type="text/javascript">
 
   $(function() {
-    //prevents page from reloading after submitting
-    $('#new-form').submit(function(event){
-      event.preventDefault();
-      
-      var textBox = $('.new-todo');
-      var payload = { 
-        task: {
-          title: textBox.val()
-        }
-      };
-      
-      $.post("/tasks", payload).success(function(data){
-        console.log("success!");
-      });
-
-    });
 
     // The taskHtml method takes in a JavaScript representation
     // of the task and produces an HTML representation using
@@ -76,7 +60,29 @@
 
       $(".toggle").change(toggleTask);
 
-    });    
+    }); 
+
+    $('#new-form').submit(function(event){
+      //prevents page from reloading after submitting
+      event.preventDefault();
+      
+      var textBox = $('.new-todo');
+      var payload = { 
+        task: {
+          title: textBox.val()
+        }
+      };
+      
+      $.post("/tasks", payload).success(function(data){
+        var htmlString = taskHtml(data)
+        var ulTodos = $('.todo-list');
+        ulTodos.append(htmlString);
+        $('.toggle').click(toggleTask);
+      });
+
+    });
+
+
   });
 
 </script>
