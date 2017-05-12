@@ -2,7 +2,7 @@
   <header class="header">
     <h1>todos</h1>
     <form id="new-form">
-    <input type="text" class="new-todo" placeholder="What needs to be done?" >
+      <input type="text" class="new-todo" placeholder="What needs to be done?" >
     </form>
   </header>
   <section class="main">
@@ -18,8 +18,18 @@
     //prevents page from reloading after submitting
     $('#new-form').submit(function(event){
       event.preventDefault();
+      
       var textBox = $('.new-todo');
-      console.log("Task: " + textBox.val());
+      var payload = { 
+        task: {
+          title: textBox.val()
+        }
+      };
+      
+      $.post("/tasks", payload).success(function(data){
+        console.log("success!");
+      });
+
     });
 
     // The taskHtml method takes in a JavaScript representation
@@ -54,11 +64,13 @@
 
     $.get("tasks").success( function(data){
       var htmlString = "";
+
       $.each(data, function(index, task){
 
         htmlString += taskHtml(task);
         
       });
+
       var ulTodos = $('.todo-list');
       ulTodos.html(htmlString);
 
