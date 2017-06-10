@@ -1,7 +1,7 @@
 
 FactoryGirl.define do
   factory :task do
-    title "Eat Pizza"
+    title 'Eat Pizza'
     done false
   end
 end

@@ -1,24 +1,8 @@
-# README
+# To Do App
 
-This README would normally document whatever steps are necessary to get the
-application up and running.
+A Basic to do app using the Todo MVC framework, built with Ruby on Rails, HTML, and CSS.
 
-Things you may want to cover:
+To Do App can be found at https://todo-wilson-p.herokuapp.com/
 
-* Ruby version
+Todo MVC - http://todomvc.com/
 
-* System dependencies
-
-* Configuration
-
-* Database creation
-
-* Database initialization
-
-* How to run the test suite
-
-* Services (job queues, cache servers, search engines, etc.)
-
-* Deployment instructions
-
-* ...
